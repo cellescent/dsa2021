@@ -1,0 +1,60 @@
+---
+title: "DSA W5 Homework JXIE"
+output: html_notebook
+---
+
+Setup
+
+```{r}
+## set working directory
+setwd("/Users/jxie/Documents/workspace/hw")
+
+
+## helper functions
+# shifts a column down
+shift <- function(x, n){
+  c(x[-(seq(n))], rep(NA, n))
+}
+
+## import data
+pstr <- read.csv("PSTRE_syntheticData.csv", sep="\t", stringsAsFactors=FALSE)
+
+## display head of data
+head(pstr)
+```
+
+* Create two new variables: action sequence variable and time interval sequence for each participant
+
+```{r}
+# temporary shifted variables
+pstr$tss <- shift(pstr$Timestamp, 1)
+pstr$cs <- shift(pstr$Coding, 1)
+
+# action sequence, sep with |
+pstr$ActionSequence <- with(pstr, paste(pstr$Coding, pstr$cs, sep="|"))
+
+# time interval
+pstr$TimeInterval <- with(pstr, pstr$tss - pstr$Timestamp)
+
+# drop unnecessary rows
+pstr <- subset(pstr, tss!=0)
+
+# display head
+head(pstr)
+```
+
+* Extract the time for the first action for each participant 
+
+```{r}
+pstr_extract <- subset(pstr, Timestamp==0)[c("TestTakerID", "TimeInterval")]
+
+head(pstr_extract)
+```
+
+
+* Represent each action sequence by n-grams (n=2) 
+
+```{r}
+# Unfortunately, it looks like getting the ngram package installed on this Mac just isn't going to work until I accept the OS update, which tends to cause problems with the VPN whenever I don't delay them as much as possible.
+```
+
