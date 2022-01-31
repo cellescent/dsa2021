@@ -15,8 +15,8 @@ PAGES = {
 selection = st.sidebar.radio("Navigation", list(PAGES.keys()))
 
 
-DATA_URL = ('https://github.com/cellescent/dsa2021/tree/main/capstone/data_capstone_dsa2021_2022.csv')
-STATES_URL = ('https://github.com/cellescent/dsa2021/tree/main/capstone/pages/states.csv')
+DATA_URL = ('https://raw.githubusercontent.com/cellescent/dsa2021/main/capstone/data_capstone_dsa2021_2022.csv')
+STATES_URL = ('https://raw.githubusercontent.com/cellescent/dsa2021/main/capstone/pages/states.csv')
 
 
 sdf = pd.read_csv(STATES_URL)

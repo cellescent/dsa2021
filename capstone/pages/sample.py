@@ -4,7 +4,7 @@ import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
 
-STATES_URL = ('pages/states.csv')
+STATES_URL = ('https://raw.githubusercontent.com/cellescent/dsa2021/main/capstone/pages/states.csv')
 sdf = pd.read_csv(STATES_URL)
 
 def app(data):
